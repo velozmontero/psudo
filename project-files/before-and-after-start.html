@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>::before and ::after</title>
+    
+        <style>
+            html, body { font-family: Helvetica; font-size: 1.2em; color: #444; }
+            
+            .bubble {
+                color: white;
+                background-color: #777;
+                padding: 60px;
+                width: 200px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            
+            .bubble::before {
+                content: "";
+            }
+            
+            .bubble::after {
+                content: "";
+            }
+            
+        </style>
+    </head>
+
+    <body>
+        <div class="bubble">Speech Bubbles</div>
+    </body>
+</html>
