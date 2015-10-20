@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>::after</title>
-    
         <style>
             html, body { font-family: sans-serif; font-size: 1.2em; color: #444; }
             
@@ -15,17 +14,93 @@
                 margin-left: 10px;
                 margin-top: 3px;
             }
+            
+            li:hover {
+                background-color: beige;
+            }
+            
+            input {
+                margin-left: 20px;
+            }
+            
+            .myButton {
+                background-color:transparent;
+                -moz-border-radius:28px;
+                -webkit-border-radius:28px;
+                border-radius:28px;
+                border:1px solid #eb4d4d;
+                display:inline-block;
+                cursor:pointer;
+                color:#ff0808;
+                font-family:Arial;
+                font-size:17px;
+                padding:8px 11px;
+                text-decoration:none;
+                text-shadow:0px 1px 0px #ff5252;
+            }
+            
+            .myButton:hover {
+                background-color:transparent;
+            }
+            
+            .myButton:active {
+                position:relative;
+                top:1px;
+            }
+            
+            .hidden {
+                display: none;
+            }
         </style>
+        
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        
     </head>
 
     <body>
         <h1>The ::after Pseudo Element</h1>
         <h3>To-Do List</h3>
-        <ul class="todo">
-            <li>Wash the car</li>
-            <li class="checked">Learn about Pseudo Elements</li>
-            <li class="checked">Play video Games</li>
-            <li>Buy groceries</li>
+        
+        
+        <input type="text" id="new-item">
+        <button id="add-item">add</button>
+       
+        
+        <ul class="todo" id="todo">
+         
         </ul>
+        <script>
+            $(document).ready(function(){ 
+                
+                for (var list in localStorage){
+                    $('.todo').append(localStorage.getItem(list));
+                }
+                
+                var ctr= 0;
+                
+                var item=document.getElementById("new-item");
+                
+                function saveValue(){
+                    var item= document.getElementById("new-item");
+                    var val= item.value;
+                    localStorage.setItem(ctr,'<li>'+val+'</li>');
+                    ctr++;
+                } 
+                
+                var check= $('.todo').find('li').click(function(){
+                    $(this).toggleClass("checked");
+                    }); 
+
+                    $('#add-item').on('click', function() {
+                        $('.todo').append(
+                        '<li>'+item.value+'</li>'
+                    );
+                    $('.todo li:last').click(function(){
+                        $(this).toggleClass("checked");
+                    });
+                    saveValue();   
+                });
+            }); 
+        </script>
     </body>
 </html>
